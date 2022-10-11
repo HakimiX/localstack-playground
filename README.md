@@ -23,6 +23,17 @@ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d
 ![](/resources/invoke.png)
 
 
+### Local development with Docker Compose
+```shell
+# Start container
+docker-compose -f docker-compose.local.yml up 
+
+# Invoke lambda function 
+curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d "{\"name\":\"bob\"}"
+```
+
+![](/resources/invoke-docker-compose.png)
+
 ### Sources
 
 * [Docker Lambda Guide](https://theodorebrgn.medium.com/localstacks-guide-to-run-aws-serverless-environment-locally-discover-the-power-of-lambda-f958f8b6330)

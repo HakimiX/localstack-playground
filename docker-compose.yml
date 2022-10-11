@@ -1,0 +1,25 @@
+# guide: 
+# https://theodorebrgn.medium.com/localstacks-guide-to-run-aws-serverless-environment-locally-discover-the-power-of-lambda-f958f8b6330
+
+version: '3.8'
+services:
+  localstack: 
+    image: localstack/localstack:latest
+    environment: 
+      - DEFAULT_REGION=ap-northeast-2
+      - EDGE_PORT=4566
+      - LAMBDA_EXECUTOR=docker
+      - LAMBDA_REMOTE_DOCKER=true
+      - LAMBDA_REMOVE_CONTAINERS=true
+      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - SERVICES=s3,lambda,logs
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./bin:/docker-entrypoint-initaws.d
+    env_file:
+      - .env
+    ports: 
+      - '4566-4583:4566-4583'

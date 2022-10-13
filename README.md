@@ -1,18 +1,21 @@
 # Localstack 
 
 ### Start 
-
 ```shell
 # 1. Start localstack container
 docker-compose up 
 
 # 2. Build the lambda image 
-docker build -t lambda-container .
+docker build -t lambda-container ./lambda-container
+
+# 3. Run the image
+docker run -p 9000:8080 lambda-container:latest
 
 # 3. Show lambda container logs
 docker logs <container-id> -f
 ```
-Invoke Lambda function 
+
+**Invoke Lambda function**
 ```shell
 curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d "{}"
 

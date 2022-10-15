@@ -1,5 +1,9 @@
 # Localstack 
 
+* [Start](#start)
+* [Local development with Docker Compose](#local-development-with-docker-compose)
+* [Localstack Pro](#localstack-pro)
+
 ### Start 
 ```shell
 # 1. Start localstack container
@@ -36,6 +40,13 @@ curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d
 ```
 
 ![](/resources/invoke-docker-compose.png)
+
+### Localstack Pro 
+LocalStack Pro or Enterprise expects your API key to be present in the environment variable `LOCALSTACK_API_KEY`. Define the environment variable.
+```shell
+export LOCALSTACK_API_KEY=<your-api-key>
+```
+> [Using your API Key](https://docs.localstack.cloud/get-started/pro/)
 
 ### Sources
 
